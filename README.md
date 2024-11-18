@@ -9,7 +9,7 @@ security researchers and penetration testers in identifying common web applicati
 
 ### Features
 
-#### LFI Vulnerability Scanner**
+#### LFI Vulnerability Scanner
 
 The LFI scanner helps to identify **Local File Inclusion** vulnerabilities in web applications. It works by appending a
 series of payloads to a given URL and checking if sensitive files, such as `/etc/passwd`, can be accessed. This feature
@@ -24,7 +24,7 @@ includes:
 - **Testing URLs**: The scanner tests the URLs and checks for the presence of sensitive files to indicate potential LFI
   vulnerabilities.
 
-#### RFI Vulnerability Scanner**
+#### RFI Vulnerability Scanner
 
 The RFI scanner helps to identify **Remote File Inclusion** vulnerabilities in web applications.
 
@@ -39,7 +39,7 @@ The TCP Port Listener module is a simple tool that listens on a specified port a
 - **Port Listening**: The tool listens on the specified port and displays incoming connections.
 - **Connection Logging**: Logs the incoming connections.
 
-#### Web Scraper**
+#### Web Scraper
 
 The Web Scraper module is used to extract all links from a specified webpage. It is useful for identifying additional
 targets for testing or simply gathering information about a web application. Features include:
