@@ -110,10 +110,21 @@ public static class Interface
 
     public static void PrintLine(string option, string value, bool newLine = true)
     {
+        Dictionary<string, ConsoleColor> options = new()
+        {
+            { "!", ConsoleColor.Red },
+            { "?", ConsoleColor.Cyan },
+            { "~", ConsoleColor.Yellow },
+            { ">", ConsoleColor.Magenta }
+        };
+
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write("[");
 
-        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.ForegroundColor = options.ContainsKey(option) || int.TryParse(option, out _)
+            ? options.ContainsKey(option) ? options[option] : ConsoleColor.Green
+            : ConsoleColor.Cyan;
+
         Console.Write(option);
 
         Console.ForegroundColor = ConsoleColor.DarkGray;

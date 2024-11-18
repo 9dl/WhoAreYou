@@ -4,6 +4,7 @@ namespace WhoAreYou.Modules;
 
 internal class Scraper
 {
+    private readonly bool _checkForParameters;
     private readonly bool _checkHost;
     private readonly int _maxSites;
     private readonly string _url;
@@ -11,7 +12,8 @@ internal class Scraper
     /// <param name="maxSites">If 0 is passed as maxSites, it will scrape all links.</param>
     /// <param name="url">The URL to scrape links from.</param>
     /// <param name="checkHost">Check if domain matches with the link it scraped.</param>
-    public Scraper(string url, int maxSites = 10, bool checkHost = false)
+    /// <param name="checkForParameters">Check if the link has parameters.</param>
+    public Scraper(string url, int maxSites = 10, bool checkHost = false, bool checkForParameters = false)
     {
         if (string.IsNullOrWhiteSpace(url))
             throw new ArgumentException("URL cannot be null or empty.", nameof(url));
@@ -19,6 +21,7 @@ internal class Scraper
         _url = url;
         _maxSites = maxSites;
         _checkHost = checkHost;
+        _checkForParameters = checkForParameters;
     }
 
     private async Task<string> FetchHtmlAsync()
@@ -50,9 +53,18 @@ internal class Scraper
                 var link = match.Groups[1].Value;
                 if (_checkHost)
                 {
-                    Uri.TryCreate(link, UriKind.Absolute, out var uri);
-                    if (uri != null && uri.Host == newUri.Host)
-                        links.Add(link);
+                    if (_checkForParameters)
+                    {
+                        Uri.TryCreate(link, UriKind.Absolute, out var uri);
+                        if (uri != null && uri.Host == newUri.Host && uri.Query.Length > 0)
+                            links.Add(link);
+                    }
+                    else
+                    {
+                        Uri.TryCreate(link, UriKind.Absolute, out var uri);
+                        if (uri != null && uri.Host == newUri.Host)
+                            links.Add(link);
+                    }
                 }
                 else
                 {

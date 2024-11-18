@@ -13,7 +13,7 @@ public static class LfiMenu
         Interface.PrintLine("?", "Choose an option:");
         Interface.PrintLine("1", "Generate Payloads");
         Interface.PrintLine("2", "Scan for LFI");
-        Interface.PrintLine("2", "Exit");
+        Interface.PrintLine("0", "Exit");
 
         var choice = Interface.ReadLine();
 
@@ -46,6 +46,7 @@ public static class LfiMenu
                 return;
             }
 
+            Console.Clear();
             Interface.PrintLine("?", "Type the path of the LFI payloads file");
             var lfiPayloadsPath = Interface.ReadLine();
 

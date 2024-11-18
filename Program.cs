@@ -17,8 +17,10 @@ internal static class Program
             Console.Clear();
             Interface.PrintLine("?", "Enter your choice:");
             Interface.PrintLine("1", "LFI Menu");
-            Interface.PrintLine("2", "Scrape Links");
-            Interface.PrintLine("3", "Exit");
+            Interface.PrintLine("2", "RFI Menu");
+            Interface.PrintLine("3", "Scrape Links");
+            Interface.PrintLine("4", "TCP Listener");
+            Interface.PrintLine("0", "Exit");
 
             var choice = Interface.ReadLine();
 
@@ -30,11 +32,21 @@ internal static class Program
                     break;
 
                 case "2":
-                    await ScrapeLinksMenu();
+                    await RfiMenu.Menu();
                     ReturnToMenu();
                     break;
 
                 case "3":
+                    await ScrapeLinksMenu();
+                    ReturnToMenu();
+                    break;
+
+                case "4":
+                    await ListenerMenu();
+                    ReturnToMenu();
+                    break;
+
+                case "0":
                     exitProgram = true;
                     Console.WriteLine("Exiting...");
                     break;
@@ -90,6 +102,30 @@ internal static class Program
         catch (Exception ex)
         {
             throw new Exception($"An error occurred while scraping links: {ex.Message}");
+        }
+    }
+
+    private static async Task ListenerMenu()
+    {
+        try
+        {
+            Console.Clear();
+            Interface.PrintLine("?", "Type Port");
+            var port = Interface.ReadLine();
+
+            if (string.IsNullOrEmpty(port))
+            {
+                Interface.PrintLine("~", "Port cannot be empty.");
+                return;
+            }
+
+            Console.Clear();
+            Listener listener = new(int.Parse(port));
+            await listener.Listen();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"An error occurred while listening: {ex.Message}");
         }
     }
 }
