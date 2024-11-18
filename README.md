@@ -9,7 +9,7 @@ security researchers and penetration testers in identifying common web applicati
 
 ### Features
 
-#### **1. LFI Vulnerability Scanner**
+#### LFI Vulnerability Scanner**
 
 The LFI scanner helps to identify **Local File Inclusion** vulnerabilities in web applications. It works by appending a
 series of payloads to a given URL and checking if sensitive files, such as `/etc/passwd`, can be accessed. This feature
@@ -24,7 +24,22 @@ includes:
 - **Testing URLs**: The scanner tests the URLs and checks for the presence of sensitive files to indicate potential LFI
   vulnerabilities.
 
-#### **2. Web Scraper**
+#### RFI Vulnerability Scanner**
+
+The RFI scanner helps to identify **Remote File Inclusion** vulnerabilities in web applications.
+
+- Example Payload Generator
+- Testing URLs: The scanner tests the URLs and checks for the presence of Listener to indicate potential RFI
+  vulnerabilities.
+
+#### TCP Port Listener
+
+The TCP Port Listener module is a simple tool that listens on a specified port and displays any incoming connections.
+
+- **Port Listening**: The tool listens on the specified port and displays incoming connections.
+- **Connection Logging**: Logs the incoming connections.
+
+#### Web Scraper**
 
 The Web Scraper module is used to extract all links from a specified webpage. It is useful for identifying additional
 targets for testing or simply gathering information about a web application. Features include:
@@ -34,11 +49,11 @@ targets for testing or simply gathering information about a web application. Fea
 - **Max Sites Limit**: Allows you to set a limit on the number of links to scrape (with an option to scrape all links if
   set to `0`).
 - **HTML Fetching**: Efficiently fetches the HTML content of the target URL for link extraction.
+- **Check for Parameters**: Optionally checks for query parameters in the links and displays them.
 
 ### Future Features
 
 **WhoAreYou** will continue to evolve and expand with new features, including:
 
-- **RFI**: For identifying RFI vulnerabilities. (duhh)
-- **SSRF**: For identifying RFI vulnerabilities. (duhh)
+- **SSRF**: For identifying SSRF vulnerabilities. (duhh)
 - **XSS**: For identifying XSS vulnerabilities. (duhh)
