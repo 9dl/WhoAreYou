@@ -32,6 +32,20 @@ The RFI scanner helps to identify **Remote File Inclusion** vulnerabilities in w
 - Testing URLs: The scanner tests the URLs and checks for the presence of Listener to indicate potential RFI
   vulnerabilities.
 
+### XSS Vulnerability Scanner
+
+The XSS scanner helps to identify **Cross-Site Scripting** vulnerabilities in web applications. It works by injecting
+
+- **Payload Generation**: Generate example XSS payloads:
+    - **Keylogger**
+    - **Session/Cookie Stealer**
+    - **Javascript Function**
+    - **Reflected XSS**
+    - **HTML Tag 1/2**
+    - **Polyglot**
+- **Testing URLs**: The scanner tests the URLs and checks for the presence of XSS payloads to indicate potential XSS
+  vulnerabilities. (Adds the Payload to the Parameter, Mainly for reflected XSS)
+
 #### TCP Port Listener
 
 The TCP Port Listener module is a simple tool that listens on a specified port and displays any incoming connections.
