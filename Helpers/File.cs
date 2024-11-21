@@ -18,7 +18,7 @@ public static class File
     {
         try
         {
-            System.IO.File.AppendAllText(path, content);
+            System.IO.File.AppendAllText(path, content + Environment.NewLine);
         }
         catch
         {
