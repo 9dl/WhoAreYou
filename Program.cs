@@ -88,9 +88,27 @@ internal static class Program
                 return;
             }
 
+            Interface.PrintLine("?", "Check Host (true/false)");
+            var checkHost = Interface.ReadLine();
+
+            if (string.IsNullOrEmpty(checkHost))
+            {
+                Interface.PrintLine("~", "Check Host cannot be empty.");
+                return;
+            }
+
+            Interface.PrintLine("?", "Check for Parameters (true/false)");
+            var checkForParameters = Interface.ReadLine();
+
+            if (string.IsNullOrEmpty(checkForParameters))
+            {
+                Interface.PrintLine("~", "Check for Parameters cannot be empty.");
+                return;
+            }
+
             var filePath = File.GenerateFileName("Scraped Links");
 
-            var scraper = new Scraper(url, int.Parse(maxSites));
+            var scraper = new Scraper(url, int.Parse(maxSites), bool.Parse(checkHost), bool.Parse(checkForParameters));
             var links = await scraper.ScrapeLinksAsync();
 
             foreach (var link in links)
