@@ -18,8 +18,9 @@ internal static class Program
             Interface.PrintLine("?", "Enter your choice:");
             Interface.PrintLine("1", "LFI Menu");
             Interface.PrintLine("2", "RFI Menu");
-            Interface.PrintLine("3", "Scrape Links");
-            Interface.PrintLine("4", "TCP Listener");
+            Interface.PrintLine("3", "XSS Menu");
+            Interface.PrintLine("4", "Scrape Links");
+            Interface.PrintLine("5", "TCP Listener");
             Interface.PrintLine("0", "Exit");
 
             var choice = Interface.ReadLine();
@@ -37,11 +38,16 @@ internal static class Program
                     break;
 
                 case "3":
-                    await ScrapeLinksMenu();
+                    await XssMenu.Menu();
                     ReturnToMenu();
                     break;
 
                 case "4":
+                    await ScrapeLinksMenu();
+                    ReturnToMenu();
+                    break;
+
+                case "5":
                     await ListenerMenu();
                     ReturnToMenu();
                     break;

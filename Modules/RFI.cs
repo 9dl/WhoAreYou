@@ -2,8 +2,6 @@
 
 namespace WhoAreYou.Modules;
 
-using File = File;
-
 internal class Rfi
 {
     private static readonly HttpClient Client = new();
